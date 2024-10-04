@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMusic Event</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" href="./static/images/logo1.png" type="image/png">
+
+</head>
+<body class="primary-bg">
+    <nav class=" navbar navbar-expand-lg navbar-dark ">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="./static/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <form class="d-flex me-auto position-relative" role="search">
+                <input class="form-control me-2 search-bar" type="search" placeholder="Search" aria-label="Search">
+                
+            </form>
+            
+            <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Events.html">Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active current-page" href="Create.html">Create</a>
+            </li>
+         
+            </ul>
+            <div class="Profile">
+                <a href="Profile.html">
+                    <img src="./static/images/jb.jpeg" alt="Profile Image">
+                </a>
+            </div>
+           
+                    
+      
+    </nav>
+
+
+    <!-- Create Event Form -->
+    <div class="container py-5">
+        <h1 class="mb-4">Create an Event</h1>
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <label for="eventImage" class="form-label">
+                        <img src="./static/images/upload.png" class="img-fluid" alt="Upload Image" id="eventImagePreview">
+                        <p class="mt-2">UPLOAD IMAGE</p>
+                    </label>
+                    <input type="file" id="custom-input" name="eventImage" style="display: none;">
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="eventTitle" class="form-label">Title:</label>
+                        <input type="text" id="custom-input" name="title" placeholder="Enter event title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="eventAddress" class="form-label">Address:</label>
+                        <input type="text" id="custom-input" name="address" placeholder="Enter event address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="eventDate" class="form-label">Date:</label>
+                        <input type="date" id="custom-input" name="date">
+                    </div>
+                    <div class="mb-3">
+                        <label for="eventTime" class="form-label">Time:</label>
+                        <input type="time" id="custom-input" name="time">
+                    </div>
+                    <div class="mb-3">
+                        <label for="eventTickets" class="form-label">Tickets:</label>
+                        <input type="number" id="custom-input" name="tickets" placeholder="Number of tickets">
+                    </div>
+                    <div class="mb-3">
+                        <label for="eventPrice" class="form-label">Price (AUD):</label>
+                        <input type="text" id="custom-input" name="price" placeholder="Enter ticket price">
+                    </div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="eventDescription" class="form-label">Description:</label>
+                <textarea id="custom-input" name="description" rows="4" placeholder="Enter event description"></textarea>
+            </div>
+            <div class="text-center">
+                <a href="#" class="btn btn-outline-light ms-3 px-5 py-2" data-bs-toggle="modal" data-bs-target="#successModal">Launch</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Success Toast -->
+        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Event Successful</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Your event has been successfully created.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+        
+<!-- footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-left">
+                <p>Booking events made effortless</p>
+                <h2>KMusic</h2>
+                <p>KMusic simplifies the process of booking music events. From discovering new performances to managing your bookings, KMusic is your go-to platform for all things music-related.</p>
+            </div>
+            <div class="footer-center">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Events.html">Events</a></li>
+                    <li><a href="Create.html">Create</a></li>
+                    <li><a href="Profile.html">Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <h3>Address</h3>
+                <p>123 Street, Perth City, Perth123</p>
+                <p>Email: <a href="mailto:support@kmusic.com">support@kmusic.com</a> | Phone</p>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
