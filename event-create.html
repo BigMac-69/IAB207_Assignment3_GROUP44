@@ -13,8 +13,6 @@
 
 </head>
 <body class="primary-bg">
-    <!-- Navbar -->
-
     <header class="custom-header py-3">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="logo">
@@ -45,73 +43,66 @@
         </div>
     </header>
 
-    <!-- Hero Banner -->
-     <div class="hero-banner">
-        
-        <div class="hero-section container-fluid">
-            <div class="hero-content text-white">
-                <h2>Bring Your Event to Life</h2>
-                <h1>Create Your Music Event</h1>
-                <p>Create, customize, and share your event with music lovers <br>everywhere.</p>
+    <!-- Create Event Form -->
+    <div class="container py-5">
+        <div class="container">
+            <h2 class="text-center">Event Creation</h2>
+    
+            <div class="row mt-4 align-items-center event-creation-form">
+                <!-- Image Upload Section -->
+                <div class="col-md-4 text-center">
+                    <div class="event-image-upload mb-3">
+                        <img src="./static/images/upload.png" class="img-fluid rounded" alt="Event Poster" id="eventPoster" style="width: 300px; height: 300px;">
+                    </div>
+                    <input type="file" id="uploadImage" class="d-none">
+                    <button class="btn btn-light" id="uploadButton">Upload</button>
+                </div>
+    
+                <!-- Event Details Form -->
+                <div class="col-md-8">
+                    <form id="eventForm">
+                        <div class="mb-3">
+                            <label for="eventName" class="form-label">Event Name:</label>
+                            <input type="text" class="form-control event-input" id="eventName" placeholder="Enter event name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventDate" class="form-label">Date:</label>
+                            <input type="date" class="form-control event-input" id="eventDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventTime" class="form-label">Time:</label>
+                            <input type="time" class="form-control event-input" id="eventTime">
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventTickets" class="form-label">Number of Tickets:</label>
+                            <input type="number" class="form-control event-input" id="eventTickets" placeholder="Enter number of tickets">
+                        </div>
+    
+                        <!-- Event Status Buttons -->
+                        <div class="mb-3">
+                            <label class="form-label">Event Status:</label>
+                            <div class="d-flex justify-content-start gap-2">
+                                <button type="button" class="btn btn-outline-success" id="statusOpen">Open</button>
+                                <button type="button" class="btn btn-outline-danger" id="statusSoldOut">Sold Out</button>
+                                <button type="button" class="btn btn-outline-secondary" id="statusInactive">Inactive</button>
+                                <button type="button" class="btn btn-outline-warning" id="statusCancelled">Cancelled</button>
+                            </div>
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="eventDescription" class="form-label">Description:</label>
+                            <textarea class="form-control event-input" id="eventDescription" rows="5" placeholder="Enter event description"></textarea>
+                        </div>
+    
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
-     </div> 
-      <!-- Events -->
-     <div class="events">
-         <div class="event-heading">
-             <h1>Events</h1>
-            
-         </div>
-         <div class="event-cards">
-             <a href="Event-Detail.html" class="event-card-link">
-                 <div class="event-card">
-                     <img src="./static/images/pm.jpeg" alt="">
-                     <h5>Post Malone's World Tour</h5>
-                     <span><h7>Brisbane</h7></span>
-                     <h6>Sun - 29 Sept | 7:00pm GMT +6</h6>
-                     <div class="artist">
-                         <p class="status active">Active</p>
-                     </div>
-                 </div>
-             </a>
-             <a href="Event-Detail.html" class="event-card-link">
-                 <div class="event-card">
-                     <img src="./static/images/ts.jpeg" alt="">
-                     <h5>Traviss Scott - Night Show</h5>
-                     <span><h7>Perth</h7></span>
-                     <h6>Sun - 30 Sept | 9:00pm GMT +6</h6>
-                     <div class="artist">
-                         <p class="status sold">Sold out</p>
-                     </div>
-                 </div>
-             </a>
-             <a href="Event-Detail.html" class="event-card-link">
-                 <div class="event-card">
-                     <img src="./static/images/taylor.jpeg" alt="">
-                     <h5>Taylor Swift - World Tour</h5>
-                     <span><h7>Perth</h7></span>
-                     <h6>Sun - 15 Oct | 9:00pm GMT +6</h6>
-                     <div class="artist">
-                         <p class="status cancelled">Cancelled</p>
-                     </div>
-                 </div>
-             </a>
-             <a href="Event-Detail.html" class="event-card-link">
-                 <div class="event-card">
-                     <img src="./static/images/newjeans.jpeg" alt="">
-                     <h5>New Jeans - World Tour</h5>
-                     <span><h7>New York</h7></span>
-                     <h6>Sun - 30 Sept | 9:00pm GMT +9</h6>
-                     <div class="artist">
-                         <p class="status active">Active</p>
-                     </div>
-                 </div>
-             </a>
-         </div>
-     </div>
-
-    
-<!-- footer -->
+    </div>
+        
+    <!-- footer -->
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-left">
@@ -135,6 +126,7 @@
             </div>
         </div>
     </footer>
+
     
 </body>
 </html>

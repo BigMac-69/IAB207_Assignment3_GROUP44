@@ -13,39 +13,35 @@
 </head>
 <body class="primary-bg">
     <!-- Navbar -->  
-     <nav class="navbar navbar-expand-lg navbar-dark ">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./static/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarScroll">
-                <form class="d-flex me-auto position-relative" role="search">
-                    <input class="form-control me-2 search-bar" type="search" placeholder="Search" aria-label="Search">
-                </form>
-                
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link " href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="Events.html">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="Create.html">Create</a>
-                </li>
-             
+    <header class="custom-header py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="logo">
+                <a href="./index.html"><img src="./static/images/logo1.png" alt="" srcset=""></a>
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link text-white" href="./index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                            <li><a class="dropdown-item" href="#">Pop</a></li>
+                            <li><a class="dropdown-item" href="#">EDM</a></li>
+                            <li><a class="dropdown-item" href="#">Jazz</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-white" href="./event-create.html">Create Events</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="./profile.html">My Tickets</a></li>
                 </ul>
-                <div class="Profile">
-                    <a href="Profile.html">
-                        <img src="./static/images/jb.jpeg" class="" alt="Profile Image">
-                    </a>
-                </div>
-        </nav>
+            </nav>
+            
+            <div class="sign">
+                <button class="auth-btn">Sign In</button>
+                <button class="auth-btn">Sign Up</button>
+            </div>
+        </div>
+    </header>
 
     <!-- Profile Scetion -->
     <div class="container profile-container">
@@ -75,9 +71,9 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Sl No</th>
+                    <th>Order ID</th>
                     <th>Title</th>
-                    <th>Artist</th>
+                    <th>Location</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Status</th>
@@ -85,9 +81,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>Musical Tour: Perth</td>
-                    <td>New Jeans</td>
+                    <td>12344532</td>
+                    <td>New Jeans - World Tour</td>
+                    <td>Perth</td>
                     <td>30 September, 2024</td>
                     <td>9 pm</td>
                     <td class="active">Active</td>
@@ -100,29 +96,29 @@
 
 
 <!-- footer -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-left">
-                <p>Booking events made effortless</p>
-                <h2>KMusic</h2>
-                <p>KMusic simplifies the process of booking music events. From discovering new performances to managing your bookings, KMusic is your go-to platform for all things music-related.</p>
-            </div>
-            <div class="footer-center">
-                <h3>Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="Events.html">Events</a></li>
-                    <li><a href="Create.html">Create</a></li>
-                    <li><a href="Profile.html">Profile</a></li>
-                </ul>
-            </div>
-            <div class="footer-right">
-                <h3>Address</h3>
-                <p>123 Street, Perth City, Perth123</p>
-                <p>Email: <a href="mailto:support@kmusic.com">support@kmusic.com</a> | Phone</p>
-            </div>
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-left">
+            <p>Booking events made effortless</p>
+            <h2>Music</h2>
+            <p>Music simplifies the process of booking music events. From discovering new performances to managing your bookings, KMusic is your go-to platform for all things music-related.</p>
         </div>
-    </footer>
+        <div class="footer-center">
+            <h3>Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Events.html">Events</a></li>
+                <li><a href="Create.html">Create</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+            </ul>
+        </div>
+        <div class="footer-right">
+            <h3>Address</h3>
+            <p>2 George St, Brisbane City QLD 4000</p>
+            <p>Email: <a href="mailto:support@kmusic.com">support@music.com</a></p>
+        </div>
+    </div>
+</footer>
     
 </body>
 </html>
