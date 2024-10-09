@@ -1,2 +1,2 @@
 # hello_world
-This repository is for practicing the GitHub Flow
+This repository is for Assigment 3 IAB207
