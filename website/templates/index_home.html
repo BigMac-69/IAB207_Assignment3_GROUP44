@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="./statics/style/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+      <title>Vietnamese Events</title>
+   </head>
+   <body>
+      <!-- Navigation Bar Section -->
+      <nav id="navBar_O" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+         <a class="navbar-brand" href="./index_home.html">Vietnamese Event</a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="d-flex justify-content-center align-items-center">
+            <form class="form-inline flex-nowrap bg-dark mx-0 mx-lg-auto rounded p-1">
+               <div class="input-group">
+                  <input class="form-control" type="search" placeholder="Search" aria-label="Search" list="datalistOptions">
+                  <datalist id="datalistOptions">
+                     <option value="Pho Festival"></option>
+                     <option value="Banh Mi Festival"></option>
+                     <option value="Bun Bo Hue Festival"></option>
+                     <option value="Banh Xeo Festival"></option>
+                     <option value="Banh Cuon Festival"></option>
+                     <option value="Brisbane Festival"></option>
+                  </datalist>
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+               </div>
+            </form>
+         </div>
+         <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+               <li class="nav-item">
+                  <a class="nav-link btn btn-outline-success" id="navLink" href="./index_home.html"><b>Home Page</b></a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link btn btn-outline-success" id="navLink" href="./event_details.html"><b>Events</b></a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link btn btn-outline-success" id="navLink" href="./create_event.html"><b>Create Event</b></a>
+               </li>
+               <li class="dropdown-center">
+                  <a class="btn btn-outline-success dropdown-toggle" href="#" id="navbarDropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <b>Categories</b>
+                  </a>
+                  <ul class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+                     <li><a class="dropdown-item" href="./event_details.html">Vietnamese Traditional Cuisine</a></li>
+                     <li><a class="dropdown-item" href="./event_details.html">Vietnamese's Beverage</a></li>
+                     <li><a class="dropdown-item" href="./event_details.html">Traditional Workshop</a></li>
+                     <li><a class="dropdown-item" href="./event_details.html">Souvenirs Shopping</a></li>
+                  </ul>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link btn btn-outline-success" id="navLink" href="./booking_history.html"><b>Booking History</b></a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link btn btn-outline-success" id="navLink" href="./event_details.html"><b>Souvenirs</b></a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link btn btn-outline-success" id="navLink" href="./event_details.html"><b>About us</b></a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link btn btn-outline-success" id="navLink" href="./event_details.html"><b>Help Center</b></a>
+               </li>
+            </ul>
+         </div>
+      </nav>
+      <!-- End of Navigation Bar Section -->
+
+      <!-- Jumbotron Section -->
+      <div class="jumbotron jumbotron-fluid bg-light text-dark py-5" id="jumbotron">
+         <div class="container text-center">
+            <h1 class="display-4">Welcome to Vietnamese Culinary Events!</h1>
+            <p class="lead">Discover, book, and enjoy the best of Vietnamese food, culture, and festivals.</p>
+            <a href="#events" class="btn btn-primary btn-lg mx-2" role="button">Explore Events</a>
+            <a href="./create_event.html" class="btn btn-outline-success btn-lg mx-2" role="button">Create Your Event</a>
+         </div>
+      </div>
+      <!-- End of Jumbotron Section -->
+
+      <!-- Event Categories Section -->
+      <div class="container mt-5">
+         <h2 id="h2_HomePage">Explore Our Event Categories</h2>
+         <div class="row">
+            <div class="col-md-4">
+               <div class="card">
+                  <img src="./statics/img/traditionalcuisine.jpg" class="card-img-top" alt="#">
+                  <div class="card-body">
+                     <h5 class="card-title">Vietnamese Traditional Cuisine</h5>
+                     <p class="card-text">Vietnamese Traditional Food, Beverage, and promotional tradition culture event</p>
+                     <a href="./index_home.html" class="btn btn-primary">Find Events</a>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="card">
+                  <img src="./statics/img/icecoffee.jpg" class="card-img-top" alt="#">
+                  <div class="card-body">
+                     <h5 class="card-title">Vietnamese's Beverage</h5>
+                     <p class="card-text">Vietnamese Traditional Food, Beverage, and promotional tradition culture event</p>
+                     <a href="./index_home.html" class="btn btn-primary">Find Events</a>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="card">
+                  <img src="./statics/img/traditionalworkshop.jpg" class="card-img-top" alt="#">
+                  <div class="card-body">
+                     <h5 class="card-title">Traditional Workshop</h5>
+                     <p class="card-text">Vietnamese Traditional Food, Beverage, and promotional tradition culture event</p>
+                     <a href="./index_home.html" class="btn btn-primary">Find Workshops</a>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="card">
+                  <img src="./statics/img/souvenir.jpg" class="card-img-top" alt="#">
+                  <div class="card-body">
+                     <h5 class="card-title">Souvenirs Shopping</h5>
+                     <p class="card-text">Vietnamese Traditional Food, Beverage, and promotional tradition culture event</p>
+                     <a href="./index_home.html" class="btn btn-primary">Find Shop</a>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="card">
+                  <img src="./statics/img/souvenir_2.jpg" class="card-img-top" alt="#">
+                  <div class="card-body">
+                     <h5 class="card-title">Explore Other Events</h5>
+                     <p class="card-text">Find Out More...</p>
+                     <a href="./index_home.html" class="btn btn-primary">Explore More...</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- End of Event Categories Section -->
+      <!-- Event Listings Section | Carousel Style -->
+      <div class="container mt-5">
+         <h2 id="h2_HomePage">Upcoming Event List</h2>
+         <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+               <!-- First Slide -->
+               <div class="carousel-item active">
+                  <div class="row">
+                     <div class="col-md-4">
+                        <div class="card">
+                           <img src="./statics/img/pho.jpg" class="card-img-top" alt="#">
+                           <div class="card-body">
+                              <h5 class="card-title">Pho Festival</h5>
+                              <p class="card-text">Date: 20th Dec, 2024<br>Status: <span class="badge rounded-pill text-bg-secondary">Inactive</span></p>
+                              <a href="./event_details.html" class="btn btn-outline-primary">View Details</a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="card">
+                           <img src="./statics/img/banhmi.jpg" class="card-img-top" alt="#">
+                           <div class="card-body">
+                              <h5 class="card-title">Banh Mi Festival</h5>
+                              <p class="card-text">Date: 15th Dec, 2024<br>Status: <span class="badge rounded-pill bg-success">Open</span></p>
+                              <a href="./event_details.html" class="btn btn-outline-primary">View Details</a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="card">
+                           <img src="./statics/img/bunbohue.jpg" class="card-img-top" alt="#">
+                           <div class="card-body">
+                              <h5 class="card-title">Bun Bo Hue Festival</h5>
+                              <p class="card-text">Date: 18th Dec, 2024<br>Status: <span class="badge rounded-pill bg-success">Open</span></p>
+                              <a href="./event_details.html" class="btn btn-outline-primary">View Details</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- Second Slide -->
+               <div class="carousel-item">
+                  <div class="row">
+                     <div class="col-md-4">
+                        <div class="card">
+                           <img src="./statics/img/banhxeo.jpg" class="card-img-top" alt="#">
+                           <div class="card-body">
+                              <h5 class="card-title">Banh Xeo Festival</h5>
+                              <p class="card-text">Date: 10th Nov, 2024<br>Status: <span class="badge rounded-pill bg-warning">Sold out</span></p>
+                              <a href="./event_details.html" class="btn btn-outline-primary">View Details</a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="card">
+                           <img src="./statics/img/banhcuon.jpg" class="card-img-top" alt="#">
+                           <div class="card-body">
+                              <h5 class="card-title">Banh Cuon Festival</h5>
+                              <p class="card-text">Date: 25th Nov, 2024<br>Status: <span class="badge rounded-pill bg-success">Open</span></p>
+                              <a href="./event_details.html" class="btn btn-outline-primary">View Details</a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="card">
+                           <img src="./statics/img/tetholiday.jpg" class="card-img-top" alt="#">
+                           <div class="card-body">
+                              <h5 class="card-title">Tet Holiday Festival</h5>
+                              <p class="card-text">Date: 25th Nov, 2024<br>Status: <span class="badge rounded-pill bg-danger">Cancelled</span></p>
+                              <a href="./event_details.html" class="btn btn-outline-primary">View Details</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+         </div>
+      </div>
+      <!-- End of Event Listings Section -->
+      <!-- Footer Section -->
+      <footer class="bg-dark text-center text-lg-start text-light" id="footer">
+         <div class="container p-4">
+            <div class="row">
+               <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                  <h5 class="text-uppercase fs-3 text fw-semibold">Contact Us</h5>
+                  <p class="text fs-5 text">
+                     Follow us on social media for the latest updates and events.
+                  </p>
+               </div>
+               <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                  <h5 class="text-uppercase fs-3 text fw-semibold">Follow Us</h5>
+                  <a id="facebookFooter" href="https://www.facebook.com" class="btn btn btn-lg btn-floating m-1" role="button"><i class="fab fa-facebook-f"></i></a>
+                  <a id="instagramFooter" href="https://www.instagram.com" class="btn btn btn-lg btn-floating m-1" role="button"><i class="fab fa-instagram"></i></a>
+                  <a id="twitterFooter" href="https://www.twitter.com" class="btn btn btn-lg btn-floating m-1" role="button"><i class="fab fa-twitter"></i></a>
+                  <a id ="youtubeFooter" href="https://www.youtube.com" class="btn btn btn-lg btn-floating m-1" role="button"><i class="fab fa-youtube"></i></a>
+                  <a id="phoneCall" href="tel:+61XXXXXXXXX" class="btn btn-success btn-lg btn-floating m-1" role="button"><i class="fas fa-phone"></i></a>
+               </div>
+            </div>
+            <div id="CopyRight" class="text-center fs-5 text ">
+               © 2024 Vietnamese Traditional Food and Drink Events. All rights reserved.
+            </div>
+         </div>
+      </footer>
+      <!-- End of Footer Section -->
+   </body>
+</html>
