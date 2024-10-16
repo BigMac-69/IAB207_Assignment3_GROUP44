@@ -1,7 +1,21 @@
-from flask import Blueprint
+from flask import Blueprint, render_template, request, redirect, url_for
+from .models import Event
+from . import db
 
-main_bp = Blueprint('main', __name__)
+mainbp = Blueprint('main', __name__)
 
-@main_bp.route('/')
+# Home Page (List Events)
+@mainbp.route('/')
 def index():
-    return '<h1>Starter code for assignment 3<h1>'
+    events = db.session.scalars(db.select(Event)).all()  # Fetch all events
+    return render_template('index_home.html', events=events)
+
+# Search for Events
+@mainbp.route('/search')
+def search():
+    if request.args.get('search') and request.args['search'] != "":
+        query = "%" + request.args['search'] + "%"
+        events = db.session.scalars(db.select(Event).where(Event.description.like(query)))
+        return render_template('index_home.html', events=events)
+    else:
+        return redirect(url_for('main.index'))
