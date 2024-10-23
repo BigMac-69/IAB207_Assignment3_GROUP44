@@ -91,5 +91,6 @@ def book():
         
         print('Payment successful!', 'success')
         return redirect(url_for('success'))  # Redirect to a success page
-    return render_template('booking.html', form=form)
+    # Help Lou
+    return render_template('events/booking.html', form=form) 
 

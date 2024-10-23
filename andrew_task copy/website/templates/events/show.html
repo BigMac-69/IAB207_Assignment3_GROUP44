@@ -33,7 +33,8 @@
         <dt class="col-sm-3" id="dt_eventDetails">Event Description:</dt>
         <dd class="col-sm-9">{{event.description}}</dd>
      </dl>
-     <a href=""><button type="submit" class="flex-shrink-1 btn btn-primary my-1">Book This Event</button></a>
+     <!-- Help Lou -->
+     <a href="{{ url_for('event.book', event_id=event.id) }}"><button type="submit" class="flex-shrink-1 btn btn-primary my-1">Book This Event</button></a>
   </div>
   <div class="row border-bottom">  
     {{render_form(form,"/events/{0}/comment".format(event.id))}}
