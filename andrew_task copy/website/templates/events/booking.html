@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Booking Form</h1>
+    
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+
+        <!-- Name Field -->
+        <div class="form-group">
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
+            {% for error in form.name.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Phone Field -->
+        <div class="form-group">
+            {{ form.phone.label(class="form-label") }}
+            {{ form.phone(class="form-control") }}
+            {% for error in form.phone.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Billing Address Field -->
+        <div class="form-group">
+            {{ form.billing_address.label(class="form-label") }}
+            {{ form.billing_address(class="form-control", rows=3) }}
+            {% for error in form.billing_address.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Payment Method Field -->
+        <div class="form-group">
+            {{ form.payment_method.label(class="form-label") }}
+            {{ form.payment_method(class="form-control") }}
+            {% for error in form.payment_method.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Card Number Field -->
+        <div class="form-group">
+            {{ form.card_number.label(class="form-label") }}
+            {{ form.card_number(class="form-control") }}
+            {% for error in form.card_number.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Expiry Date Field -->
+        <div class="form-group">
+            {{ form.expiry_date.label(class="form-label") }}
+            {{ form.expiry_date(class="form-control") }}
+            {% for error in form.expiry_date.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- CVV Field -->
+        <div class="form-group">
+            {{ form.cvv.label(class="form-label") }}
+            {{ form.cvv(class="form-control") }}
+            {% for error in form.cvv.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group text-center">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
