@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField, StringField, SubmitField, PasswordField, SelectField, DateField, TimeField
-from wtforms.validators import InputRequired, Email, EqualTo
+from wtforms.validators import InputRequired, Email, EqualTo, Length
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 
 ALLOWED_FILE = {'PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg'}

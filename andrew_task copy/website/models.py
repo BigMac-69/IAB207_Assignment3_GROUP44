@@ -55,8 +55,8 @@ class Comment(db.Model):
     def __repr__(self):
         return f"Comment: {self.text}"
     
-    class Booking(db.Model):
-        __tablename__ = 'bookings'  # Name of the database table
+class Booking(db.Model):
+    __tablename__ = 'bookings'  # Name of the database table
 
     id = db.Column(db.Integer, primary_key=True)  # Primary key
     name = db.Column(db.String(100), nullable=False)  # User's name
