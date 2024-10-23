@@ -21,6 +21,17 @@ class EventForm(FlaskForm):
     quantity = StringField('Ticket Quantity', validators=[InputRequired()])
     submit = SubmitField("Create")
 
+class BookingForm(FlaskForm):
+    name = StringField('Name', validators=[InputRequired(), Length(min=1, max=100, message="Name is required and cannot exceed 100 characters.")])
+    phone = StringField('Phone', validators=[InputRequired(), Length(min=10, max=15, message="Phone number must be between 10 to 15 digits.")])
+    billing_address = TextAreaField('Billing Address', validators=[InputRequired(), Length(max=250, message="Billing address cannot exceed 250 characters.")])
+    payment_method = SelectField('Payment Method', choices=[('visa', 'Visa'),('credit', 'Credit Card')], validators=[InputRequired()])
+    card_number = StringField('Card Number', validators=[InputRequired(), Length(min=16, max=16, message="Card number must be exactly 16 digits.")])
+    expiry_date = StringField('Expiry Date (MM/YY)', validators=[InputRequired(), Length(min=5, max=5, message="Expiry date must be in the format MM/YY.")])
+    cvv = StringField('CVV', validators=[InputRequired(), Length(min=3, max=3, message="CVV must be exactly 3 digits.")])
+    submit = SubmitField('Pay Now')
+
+
 #User login
 class LoginForm(FlaskForm):
     user_name = StringField("First Name (It's your username)", validators=[InputRequired('Enter your first (user) name')])

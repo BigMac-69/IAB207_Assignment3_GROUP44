@@ -54,3 +54,19 @@ class Comment(db.Model):
     # string print method
     def __repr__(self):
         return f"Comment: {self.text}"
+    
+    class Booking(db.Model):
+        __tablename__ = 'bookings'  # Name of the database table
+
+    id = db.Column(db.Integer, primary_key=True)  # Primary key
+    name = db.Column(db.String(100), nullable=False)  # User's name
+    phone = db.Column(db.String(10), nullable=False)  # User's phone number
+    billing_address = db.Column(db.String(250), nullable=False)  # Billing address
+    payment_method = db.Column(db.String(10), nullable=False)  # Payment method (e.g., 'visa', 'credit')
+    card_number = db.Column(db.String(16), nullable=False)  # Card number
+    expiry_date = db.Column(db.String(5), nullable=False)  # Expiry date in MM/YY format
+    cvv = db.Column(db.String(3), nullable=False)  # CVV
+
+    def __repr__(self):
+        return f"Booking: {self.id}: {self.name}, {self.phone}>"
+

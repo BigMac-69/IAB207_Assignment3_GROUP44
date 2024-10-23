@@ -71,3 +71,25 @@ def comment(id):
   # notice the signature of url_for
   return redirect(url_for('event.show', id=id))
 
+@destbp.route('/booking', methods=['GET', 'POST'])
+def book():
+    form = BookingForm()
+    if form.validate_on_submit():
+        # Create a new Booking instance
+        new_booking = Booking(
+            name=form.name.data,
+            phone=form.phone.data,
+            billing_address=form.billing_address.data,
+            payment_method=form.payment_method.data,
+            card_number=form.card_number.data,
+            expiry_date=form.expiry_date.data,
+            cvv=form.cvv.data
+        )
+        # Add the booking to the database
+        db.session.add(new_booking)
+        db.session.commit()
+        
+        print('Payment successful!', 'success')
+        return redirect(url_for('success'))  # Redirect to a success page
+    return render_template('booking.html', form=form)
+
