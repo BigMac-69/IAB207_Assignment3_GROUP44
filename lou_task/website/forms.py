@@ -29,6 +29,7 @@ class BookingForm(FlaskForm):
     card_number = StringField('Card Number', validators=[InputRequired(), Length(min=16, max=16, message="Card number must be exactly 16 digits.")])
     expiry_date = StringField('Expiry Date (MM/YY)', validators=[InputRequired(), Length(min=5, max=5, message="Expiry date must be in the format MM/YY.")])
     cvv = StringField('CVV', validators=[InputRequired(), Length(min=3, max=3, message="CVV must be exactly 3 digits.")])
+    #cost
     submit = SubmitField('Pay Now')
 
 

@@ -72,6 +72,7 @@ def comment(id):
   return redirect(url_for('event.show', id=id))
 
 @destbp.route('/booking', methods=['GET', 'POST'])
+#@login_required
 def book():
     form = BookingForm()
     if form.validate_on_submit():
@@ -90,7 +91,38 @@ def book():
         db.session.commit()
         
         print('Payment successful!', 'success')
-        return redirect(url_for('success'))  # Redirect to a success page
-    # Help Lou
+        return redirect(url_for('index.html'))  # Redirect to a success page
     return render_template('events/booking.html', form=form) 
 
+#Changes
+@destbp.route('/bookinghistory')
+#@login_required
+def booking_history():
+    return render_template('events/bookinghistory.html', bookings=bookings)
+
+bookings = [
+    {
+        "event_name": "Food Festival",
+        "event_image": "https://via.placeholder.com/100.jpeg",
+        "booking_id": "12345",
+        "booking_date": "2024-10-01",
+        "cost": "$50",
+        "ticket": 1
+    },
+    {
+        "event_name": "Food Tasting",
+        "event_image": "https://via.placeholder.com/100.png",
+        "booking_id": "12346",
+        "booking_date": "2024-10-02",
+        "cost": "$50",
+        "ticket": 3
+    },
+    {
+        "event_name": "Culinary Expo",
+        "event_image": "https://via.placeholder.com/100.jpeg",
+        "booking_id": "12347",
+        "booking_date": "2024-10-03",
+        "cost": "$50",
+        "ticket": 6
+    }
+]
