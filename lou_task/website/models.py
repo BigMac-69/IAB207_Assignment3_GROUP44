@@ -55,11 +55,15 @@ class Comment(db.Model):
     def __repr__(self):
         return f"Comment: {self.text}"
     
+# Updated relationship and make user and event consistent (From Andrew)
 class Booking(db.Model):
     __tablename__ = 'bookings'  # Name of the database table
 
     id = db.Column(db.Integer, primary_key=True)  # Primary key
-    name = db.Column(db.String(100), nullable=False)  # User's name
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    boname = db.Column(db.String(100), nullable=False)  # User's name
+    boemail = db.Column(db.String(100), nullable=False)  # Email
     phone = db.Column(db.String(10), nullable=False)  # User's phone number
     billing_address = db.Column(db.String(250), nullable=False)  # Billing address
     payment_method = db.Column(db.String(10), nullable=False)  # Payment method (e.g., 'visa', 'credit')
@@ -67,7 +71,10 @@ class Booking(db.Model):
     expiry_date = db.Column(db.String(5), nullable=False)  # Expiry date in MM/YY format
     cvv = db.Column(db.String(3), nullable=False)  # CVV
     cost = db.Column(db.String(10), nullable=False)  # Cost of booking
-    tickets = db.Column(db.Integer, nullable=False) # tickets
+    number_of_tickets = db.Column(db.Integer, nullable=False) # tickets
+
+    events = db.relationship('Event', backref='bookings')
+    users = db.relationship('User', backref='bookings')
 
     def __repr__(self):
         return f"Booking: {self.id}: {self.name}, {self.phone}>"

@@ -71,60 +71,54 @@ def comment(id):
   # notice the signature of url_for
   return redirect(url_for('event.show', id=id))
 
-@destbp.route('/booking', methods=['GET', 'POST'])
-#@login_required
-def book():
+# Updated for Lou from Andrew
+@destbp.route('/events/<int:event_id>/book', methods=['GET', 'POST'])
+@login_required
+def book(event_id):
+    event = Event.query.get_or_404(event_id)
     form = BookingForm()
+
     if form.validate_on_submit():
-        # Create a new Booking instance
-        new_booking = Booking(
-            name=form.name.data,
-            phone=form.phone.data,
-            billing_address=form.billing_address.data,
-            payment_method=form.payment_method.data,
-            card_number=form.card_number.data,
-            expiry_date=form.expiry_date.data,
-            cvv=form.cvv.data,
-            cost=form.cost.data,  # Capture the cost
-            number_of_tickets=form.number_of_tickets.data
-        )
-        # Add the booking to the database
-        db.session.add(new_booking)
-        db.session.commit()
-        
-        print('Payment successful!', 'success')
-        return redirect(url_for('index.html'))  # Redirect to a success page
-    return render_template('events/booking.html', form=form) 
+        try:
+            existing_booking = Booking.query.filter_by(event_id=event_id, user_id=current_user.id).first()
+            if existing_booking:
+                print("You have already booked this event.", "warning")
+            else:
+                # Create a new booking
+                new_booking = Booking(event_id=event_id, 
+                                  user_id=current_user.id, 
+                                  boname=form.boname.data,
+                                  boemail=form.boemail.data,
+                                  phone=form.phone.data,
+                                  billing_address=form.billing_address.data,
+                                  payment_method=form.payment_method.data,
+                                  card_number=form.card_number.data,
+                                  expiry_date=form.expiry_date.data,
+                                  cvv=form.cvv.data,
+                                  cost=form.cost.data,  # Capture the cost
+                                  number_of_tickets=form.number_of_tickets.data
+                                  )
+                db.session.add(new_booking)
+                db.session.commit()  # Make sure the commit is successful
+                print("You have successfully booked this event!", "success")
+                return redirect(url_for('event.history'))
+            
+        except Exception as e:
+            db.session.rollback()  # Rollback in case of an error
+            print(f"Error booking event: {str(e)}", "danger")
+            return redirect(url_for('event.book', event_id=event_id))
+    return render_template('events/booking.html', form=form, event=event)
 
-#Changes
-@destbp.route('/bookinghistory')
-#@login_required
-def booking_history():
-    return render_template('events/bookinghistory.html', bookings=bookings)
+# Updated for Lou from Andrew
+@destbp.route('/bookings/history', methods=['GET'])
+@login_required
+def history():
+    # Get all bookings for the logged-in user
+    user_id = current_user.id
+    booking = Booking.query.filter_by(user_id=current_user.id).all()
 
-bookings = [
-    {
-        "event_name": "Food Festival",
-        "event_image": "https://via.placeholder.com/100.jpeg",
-        "booking_id": "12345",
-        "booking_date": "2024-10-01",
-        "cost": "$50",
-        "ticket": 1
-    },
-    {
-        "event_name": "Food Tasting",
-        "event_image": "https://via.placeholder.com/100.png",
-        "booking_id": "12346",
-        "booking_date": "2024-10-02",
-        "cost": "$50",
-        "ticket": 3
-    },
-    {
-        "event_name": "Culinary Expo",
-        "event_image": "https://via.placeholder.com/100.jpeg",
-        "booking_id": "12347",
-        "booking_date": "2024-10-03",
-        "cost": "$50",
-        "ticket": 6
-    }
-]
+    # Check if bookings are retrieved successfully
+    if not booking:
+        print("You haven't booked any events yet.", "info")
+
+    return render_template('events/history.html', booking=booking)

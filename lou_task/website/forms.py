@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField, StringField, SubmitField, PasswordField, SelectField, DateField, TimeField
-from wtforms.validators import InputRequired, Email, EqualTo, Length
+from wtforms.validators import InputRequired, Email, EqualTo, Length, DataRequired
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 
 ALLOWED_FILE = {'PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg'}
@@ -21,8 +21,10 @@ class EventForm(FlaskForm):
     quantity = StringField('Ticket Quantity', validators=[InputRequired()])
     submit = SubmitField("Create")
 
+# Updated BookingForm for Lou from Andrew
 class BookingForm(FlaskForm):
-    name = StringField('Name', validators=[InputRequired(), Length(min=1, max=100, message="Name is required and cannot exceed 100 characters.")])
+    boname = StringField('Name', validators=[InputRequired(), Length(min=1, max=100, message="Name is required and cannot exceed 100 characters.")])
+    boemail = StringField('Email', validators=[DataRequired(), Email()])
     phone = StringField('Phone', validators=[InputRequired(), Length(min=10, max=15, message="Phone number must be between 10 to 15 digits.")])
     billing_address = TextAreaField('Billing Address', validators=[InputRequired(), Length(max=250, message="Billing address cannot exceed 250 characters.")])
     payment_method = SelectField('Payment Method', choices=[('visa', 'Visa'),('credit', 'Credit Card')], validators=[InputRequired()])
