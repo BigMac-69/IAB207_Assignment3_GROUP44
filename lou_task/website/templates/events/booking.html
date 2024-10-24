@@ -36,6 +36,24 @@
             {% endfor %}
         </div>
 
+         <!-- Cost Field -->
+         <div class="mb-3">
+            {{ form.cost.label(class="form-label") }}
+            {{ form.cost(class="form-control") }}
+            {% for error in form.cost.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- ticket Field -->
+        <div class="mb-3">
+            {{ form.number_of_tickets.label(class="form-label") }}
+            {{ form.number_of_tickets(class="form-control") }}
+            {% for error in form.number_of_tickets.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
         <!-- Payment Method Field -->
         <div class="form-group">
             {{ form.payment_method.label(class="form-label") }}

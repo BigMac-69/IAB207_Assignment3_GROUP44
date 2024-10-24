@@ -66,6 +66,8 @@ class Booking(db.Model):
     card_number = db.Column(db.String(16), nullable=False)  # Card number
     expiry_date = db.Column(db.String(5), nullable=False)  # Expiry date in MM/YY format
     cvv = db.Column(db.String(3), nullable=False)  # CVV
+    cost = db.Column(db.String(10), nullable=False)  # Cost of booking
+    tickets = db.Column(db.Integer, nullable=False) # tickets
 
     def __repr__(self):
         return f"Booking: {self.id}: {self.name}, {self.phone}>"

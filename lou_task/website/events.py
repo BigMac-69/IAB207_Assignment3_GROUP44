@@ -84,7 +84,9 @@ def book():
             payment_method=form.payment_method.data,
             card_number=form.card_number.data,
             expiry_date=form.expiry_date.data,
-            cvv=form.cvv.data
+            cvv=form.cvv.data,
+            cost=form.cost.data,  # Capture the cost
+            number_of_tickets=form.number_of_tickets.data
         )
         # Add the booking to the database
         db.session.add(new_booking)
