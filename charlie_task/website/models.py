@@ -1,6 +1,6 @@
 from . import db
 from datetime import datetime
-from flask_login import  UserMixin
+from flask_login import UserMixin
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -10,10 +10,7 @@ class User(db.Model, UserMixin):
     addr = db.Column(db.String(200), index=True, unique=True, nullable=False)
     numb = db.Column(db.String(10), index=True, unique=True, nullable=False)
     emailid = db.Column(db.String(100), index=True, nullable=False)
-	# password should never stored in the DB, an encrypted password is stored
-	# the storage should be at least 255 chars long, depending on your hashing algorithm
     password_hash = db.Column(db.String(255), nullable=False)
-    # relation to call user.comments and comment.created_by
     comments = db.relationship('Comment', backref='user')
     
     def __repr__(self):
@@ -32,12 +29,23 @@ class Event(db.Model):
     location = db.Column(db.String(100))
     status = db.Column(db.String(100))
     quantity = db.Column(db.String(100))
-    # ... Create the Comments db.relationship
-	# relation to call event.comments and comment.event
+    is_canceled = db.Column(db.Boolean, default=False)  # New field for event cancellation
     comments = db.relationship('Comment', backref='event')
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # Assuming the user who created the event
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    creator = db.relationship('User', backref='events')
 
-    creator = db.relationship('User', backref='events')  # Relationship to User
+    def cancel_event(self):  # New method for canceling an event
+        self.is_canceled = True
+        db.session.commit()
+
+    def update_details(self, name=None, description=None, date=None):  # New method for updating event details
+        if name:
+            self.name = name
+        if description:
+            self.description = description
+        if date:
+            self.date = date
+        db.session.commit()
 	
     def __repr__(self):
         return f"Name: {self.name}"
@@ -47,10 +55,8 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(400))
     created_at = db.Column(db.DateTime, default=datetime.now())
-    # add the foreign key
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
-    # string print method
     def __repr__(self):
         return f"Comment: {self.text}"

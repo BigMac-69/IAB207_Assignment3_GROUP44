@@ -5,7 +5,7 @@ from flask_wtf.file import FileField, FileRequired, FileAllowed
 
 ALLOWED_FILE = {'PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg'}
 
-#User event_create
+# User event_create
 class EventForm(FlaskForm):
     name = StringField('Event Name', validators=[InputRequired()])
     description = TextAreaField('Event Description', validators=[InputRequired()])
@@ -21,13 +21,33 @@ class EventForm(FlaskForm):
     quantity = StringField('Ticket Quantity', validators=[InputRequired()])
     submit = SubmitField("Create")
 
-#User login
+# Form for updating event details (excluding status)
+# Added a new form for updating event details, 
+# this form excludes the 'status' field and includes a file field with updated label for the event poster
+class UpdateEventForm(FlaskForm):
+    name = StringField('Event Name', validators=[InputRequired()])
+    description = TextAreaField('Description', validators=[InputRequired()])
+    category = SelectField('Category', choices=[('Cuisine', 'Cuisine'), ('Beverages', 'Beverages'), ('Workshop', 'Workshop'), ('Souvenir', 'Souvenir')], validators=[InputRequired()])
+    image = FileField('Change Event Poster', validators=[
+        FileAllowed(ALLOWED_FILE, 'Only supports png, jpg, jpeg')])  # Changed label for poster update
+    date = DateField('Event Date', format='%Y-%m-%d', validators=[InputRequired()])
+    time = TimeField('Start Time', format='%H:%M', validators=[InputRequired()])
+    etime = TimeField('End Time', format='%H:%M', validators=[InputRequired()])
+    location = StringField('Location', validators=[InputRequired()])
+    quantity = StringField('Ticket Quantity', validators=[InputRequired()])
+    submit = SubmitField('Update Event')
+
+# Form for canceling event
+class CancelEventForm(FlaskForm):
+    submit = SubmitField('Cancel Event')
+
+# User login
 class LoginForm(FlaskForm):
     user_name = StringField("First Name (It's your username)", validators=[InputRequired('Enter your first (user) name')])
     password = PasswordField("Password", validators=[InputRequired('Enter your password')])
     submit = SubmitField("Login")
 
-#User register
+# User register
 class RegisterForm(FlaskForm):
     user_name = StringField("First Name (It's your username)", validators=[InputRequired()])
     sur_name = StringField("Surname", validators=[InputRequired('Enter sur name')])
@@ -35,14 +55,12 @@ class RegisterForm(FlaskForm):
     address = StringField("Your Address", validators=[InputRequired('Enter your address')])
     email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
     
-    #linking two fields - password should be equal to data entered in confirm
     password = PasswordField("Password", validators=[InputRequired(),
                   EqualTo('confirm', message="Passwords should match")])
     confirm = PasswordField("Confirm Password")
-    #submit button
     submit = SubmitField("Register")
 
-#User comment
+# User comment
 class CommentForm(FlaskForm):
     text = TextAreaField('Comment', [InputRequired()])
     submit = SubmitField('Create')
