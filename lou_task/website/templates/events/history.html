@@ -1,0 +1,30 @@
+<!-- Updated for Lou from Andrew -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>My Booking History</h2>
+    <div class="row">
+        {% for booking in booking %}
+        <div class="col-md-12 mb-4 d-flex align-items-center">
+            <!-- Event Image -->
+            <div class="col-md-4">
+                <img src="{{ booking.events.image }}" alt="Event Image" class="img-fluid" style="border-radius: 10px;">
+            </div>
+
+            <!-- Event Details -->
+            <div class="col-md-8">
+                <h3><strong>{{ booking.events.name }}</strong></h3>
+                <p>{{ booking.events.date.strftime('%d %B %Y') }} | {{ booking.events.time }} - {{ booking.events.etime }}</p>
+                <p>{{ booking.events.location }}</p>
+                <p style="color: green;">#{{ booking.id }}</p>
+              
+                <button class="btn btn-outline-dark">Manage Booking</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

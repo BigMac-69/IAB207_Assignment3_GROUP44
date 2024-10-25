@@ -1,0 +1,117 @@
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Group 44 - IAB207 - Assignment 3</title>
+   <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMRRsmBAG7lrE8vFzMEJpFvmz9LmthJFTAdUWTy" crossorigin="anonymous">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+
+<body>
+   <!-- Header -->
+   <header class="bg-light border-bottom">
+
+      <nav id="navBar_O" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+         <a class="navbar-brand" href="{{ url_for('main.index') }}">Vietnamese Event</a>
+         <div class="collapse navbar-collapse" id="navbarNav">
+             <ul class="navbar-nav ms-auto">
+
+                 {% if current_user.is_authenticated %}
+                 <li class="nav-item">
+                     <a class="nav-link btn btn-outline-success disabled" href="#">Welcome {{current_user.name}}</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link btn btn-outline-success" href="{{ url_for('auth.logout') }}">Log Out</a>
+                 </li>
+                 {% else %}
+                 <li class="nav-item">
+                     <a class="nav-link btn btn-outline-success" id="navLink" href="{{ url_for('auth.login') }}"><b>Sign In</b></a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link btn btn-outline-success" id="navLink" href="{{ url_for('auth.register') }}"><b>Sign Up</b></a>
+                 </li>
+                 {% endif %}
+                 <li class="nav-item">
+                     <a class="nav-link btn btn-outline-success" id="navLink" href="{{ url_for('main.index') }}"><b>Home Page</b></a>
+                 </li>
+                 <li class="dropdown-center">
+                    <a class="btn btn-outline-success dropdown-toggle" href="#" id="navbarDropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <b>Categories</b>
+                    </a>
+                    <ul class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+                       <li><a class="dropdown-item" href="{{ url_for('main.filter_by_category', category='Cuisine') }}">Cuisine</a></li>
+                       <li><a class="dropdown-item" href="{{ url_for('main.filter_by_category', category='Beverages') }}">Beverages</a></li>
+                       <li><a class="dropdown-item" href="{{ url_for('main.filter_by_category', category='Workshop') }}">Workshop</a></li>
+                       <li><a class="dropdown-item" href="{{ url_for('main.filter_by_category', category='Sourvenir') }}">Souvenir</a></li>
+                    </ul>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link btn btn-outline-success" id="navLink" href="{{ url_for('event.create') }}"><b>Create Event</b></a>
+                 </li>
+                 <li class="nav-item">
+                    <!-- Added link for Lou from Andrew -->
+                     <a class="nav-link btn btn-outline-success" id="navLink" href="{{ url_for('event.history') }}"><b>Booking History</b></a>
+                 </li>
+
+             </ul>
+         </div>
+      </nav>
+
+    {% block header %}
+
+    {% endblock %}
+
+   </header>
+      
+   {% block content %}
+
+   {% endblock %}
+   
+    <footer class="bg-dark text-center text-lg-start text-light" id="footer">
+      <div class="container p-4">
+          <div class="row">
+              <!-- Contact Us Section -->
+              <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                  <h5 class="text-uppercase fs-3 fw-semibold">Contact Us</h5>
+                  <p class="fs-5">
+                      Follow us on social media for the latest updates and events.
+                  </p>
+              </div>
+  
+              <!-- Follow Us Section -->
+              <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                  <h5 class="text-uppercase fs-3 fw-semibold">Follow Us</h5>
+                  <a id="facebookFooter" href="https://www.facebook.com" class="btn btn-lg btn-floating m-1" role="button">
+                      <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a id="instagramFooter" href="https://www.instagram.com" class="btn btn-lg btn-floating m-1" role="button">
+                      <i class="fab fa-instagram"></i>
+                  </a>
+                  <a id="twitterFooter" href="https://www.twitter.com" class="btn btn-lg btn-floating m-1" role="button">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+                  <a id="youtubeFooter" href="https://www.youtube.com" class="btn btn-lg btn-floating m-1" role="button">
+                      <i class="fab fa-youtube"></i>
+                  </a>
+                  <a id="phoneCall" href="tel:+61XXXXXXXXX" class="btn btn-success btn-lg btn-floating m-1" role="button">
+                      <i class="fas fa-phone"></i>
+                  </a>
+              </div>
+          </div>
+  
+          <!-- Copyright Section -->
+          <div id="CopyRight" class="text-center fs-5 mt-3">
+              © 2024 Vietnamese Traditional Food and Drink Events. All rights reserved.
+          </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+   </body>
+
+</html>
