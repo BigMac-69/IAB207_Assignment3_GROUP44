@@ -135,9 +135,11 @@ def cancel_event(id):
     form = CancelEventForm()
     if form.validate_on_submit():
         # Mark the event as canceled (added functionality)
-        event.status = 'Cancelled'  # Update status to 'Cancelled'
+        event.status = 'canceled'  # Update status to 'canceled' (lowercase)
         db.session.commit()
         flash('Event canceled successfully!', 'success')
         return redirect(url_for('event.show', id=event.id))
 
     return render_template('events/show.html', event=event, form=form)
+
+    
