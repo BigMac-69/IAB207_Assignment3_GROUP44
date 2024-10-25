@@ -71,7 +71,7 @@ def comment(id):
   # notice the signature of url_for
   return redirect(url_for('event.show', id=id))
 
-# Updated for Lou from Andrew
+
 @destbp.route('/events/<int:event_id>/book', methods=['GET', 'POST'])
 @login_required
 def book(event_id):
