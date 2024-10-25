@@ -5,7 +5,7 @@
     <h2>My Booking History</h2>
     <div class="row">
         {% for booking in booking %}
-        <div class="col-md-12 mb-4 d-flex align-items-center border rounded p-3" style="border-color: grey; border-width: 10px;">
+        <div class="col-md-12 mb-4 d-flex align-items-center rounded p-3" style="border: 3px solid rgb(255, 128, 0);">
             <!-- Event Image -->
             <div class="col-md-4">
                 <img src="{{ booking.events.image }}" alt="Event Image" class="img-fluid" style="border-radius: 10px;">
