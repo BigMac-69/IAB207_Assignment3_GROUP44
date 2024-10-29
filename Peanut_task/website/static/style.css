@@ -179,31 +179,45 @@ input[type="search"]:focus {
 }
 
 /* Customize carousel controls */
-/* Adjust Carousel Previous/Next Buttons */
-.carousel-control-prev, .carousel-control-next {
-    width: 5%; 
+/* Carousel item and card styling */
+.carousel-item {
+    transition: transform 0.5s ease;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Carousel controls styling */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000;
+    padding: 15px;
+    border-radius: 50%;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.carousel-control-prev {
-    left: -70px;
+.carousel-control-prev-icon {
+    left: -40px; /* Adjust the left position */
 }
 
-.carousel-control-next {
-    right: -70px;
-}
-
-.carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: #000; 
-    padding: 10px;
-    border-radius: 50%;
+    right: -40px; /* Adjust the right position */
 }
 
 .carousel-control-prev-icon:hover,
 .carousel-control-next-icon:hover {
-    background-color: #e68900;
+    background-color: #ff9800;
     transition: background-color 0.2s;
 }
 
@@ -233,7 +247,7 @@ input[type="search"]:focus {
     transition: transform 0.2s ease; /* Smooth transition effect */
 }
 .badge.rounded-pill:hover {
-    transform: scale(1.2); 
+    transform: scale(1.15); 
 }
 /* End of Home Page CSS classes */
 
@@ -412,9 +426,8 @@ h2:hover {
     background-color: #ff9800;
     border-color: #ff9800;
     padding: 12px 24px;
-    font-size: 1.2rem;
+    font-size: 20px;
     font-weight: bold;
-    width: 100%;
     border-radius: 10px;
 }
 
@@ -510,9 +523,11 @@ main {
 /* Footer styling remains the same with some layout adjustments */
 #footer {
     padding: 1em 1em;
-    background-color: #333;
-    color: #ccc;
-    margin-top: auto; /* Push footer to bottom */
+    background-image: url('../static/image/blackBack.jpeg');
+    margin-top: auto; 
+    background-position: centre; 
+    background-size: cover;
+
 }
 
 #footer h5 {
@@ -529,7 +544,7 @@ main {
 /* Social Media Buttons */
 #footer a.btn {
     color: #fff;
-    border-radius: 50%;
+    border-radius: 60%;
     padding: 0.5em 0.6em;
     transition: background-color 0.3s;
 }
@@ -561,7 +576,7 @@ main {
 
 #CopyRight {
     font-style: italic;
-    font-size: 1em;
+    font-size: 1.5em !important;
     color: #bbb;
     margin-top: 1.5em;
 }
@@ -607,3 +622,70 @@ main {
     text-decoration: none;
 }
 
+
+/* Placeholder for testing about US */
+/* About Us Section Styling */
+/* Full-width About Section */
+.about-container {
+    background-color: #f9f9f9;            /* Light background for contrast */
+    padding: 3rem 2rem;
+}
+
+.about-card {
+    max-width: 1200px;                    /* Limit max width for readability */
+    margin: 0 auto;                       /* Center the card */
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft initial shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover transition */
+}
+
+.about-card:hover {
+    transform: translateY(-5px);          /* Lift effect on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.about-title {
+    color: #ff9800;                       /* Theme color for title */
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* Event List Section Styling */
+.card-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    border-radius: 12px 12px 0 0;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #ff9800;
+    font-weight: bold;
+}
