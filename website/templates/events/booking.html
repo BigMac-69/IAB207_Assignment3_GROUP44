@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <!-- Left Column: Event Details -->
+        <div class="col-md-6">
+            <!-- Event Image -->
+            <img src="{{ event.image }}" alt="Event Image" class="img-fluid mb-3" style="border-radius: 10px;">
+
+            <!-- Event Information -->
+            <h3>{{ event.name }}</h3>
+            <p><strong>Price:</strong> AUD {{ event.price }}</p>
+            <p><strong>Time:</strong> {{ event.time }} - {{ event.etime }}</p>
+            <p><strong>Date:</strong> {{ event.date.strftime('%d %B %Y') }}</p>
+            <p><strong>Location:</strong> {{ event.location }}</p>
+        </div>
+      <div class="col-md-6">
+        <h1>Booking</h1>
+        {{ render_form(form) }}
+
+        <!-- Display the Total Cost after "Calculate Total" is clicked -->
+        {% if total_cost %}
+        <h3 class="mt-4">Total Price: AUD {{ total_cost }}</h3>
+        {% else %}
+        <h3 class="mt-4">Total Price: AUD 0</h3>
+        {% endif %}
+      </div>
+      
+    </div>
+  </div>
+
+{% endblock %}

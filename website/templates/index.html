@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block header %}
+      <!-- Jumbotron active later -->
+      <div class="container-fluid p-5 bg-image text-white text-center" style="background-image: url('../static/image/banner.jpg'); background-position: centre; background-size: cover;">
+         <div class="row justify-content-center align-items-center">
+            <div class="col-md-8">
+               <div class="card shadow-lg p-5 mb-5" style="background-color: rgba(255, 255, 255, 0.95); border-radius: 15px;">
+                  <h1 class="text-center display-4 mb-3" style="color: #000; font-weight: bold;">Welcome to Vietnamese Culinary Events!</h1>
+                  <p class="text-center lead" style="color: #666;">Discover, and enjoy the best of Vietnamese food, culture, and festivals.</p>
+                  <p style="color: #666;">(Search by name)</p>       
+                  <form class="d-flex justify-content-center" action="{{ url_for('main.search') }}">
+                     <input type="text" name="search" class="form-control mx-2" id="SearchForm" placeholder="Search events" style="max-width: 900px; border-radius: 10px; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);">
+                     <button type="submit" class="btn btn-primary" id="submitEvent">Submit</button>
+                 </form>
+                </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Jumbotron end -->
+
+{% endblock %}
+
+{% block content %}
+<!-- Full-Width About Section -->
+<div class="container-fluid my-5 about-container" style="background-image: url(../static/image/whiteTheme.jpg);">
+    {% if not hide_about %}
+    <div class="about-card p-5 shadow-lg rounded">
+        <h2 class="about-title text-center mb-4">About Us</h2>
+        <p class="about-text">
+            Welcome to our Vietnamese Event Booking website, your one-stop platform for discovering and booking the best Vietnamese cultural experiences! Our mission is to connect people with the vibrant world of Vietnamese traditions, festivals, 
+            and activities through an easy-to-use, streamlined platform. 
+            Whether you're interested in attending food festivals, cultural workshops, live performances, or community gatherings, we’ve got something for everyone.
+        </p>
+        <p class="about-text">
+            Our website is designed to showcase a wide range of events celebrating the richness of Vietnamese culture, both locally and internationally. 
+            From traditional craft workshops to modern music festivals, we aim to make it simple for users to find and book exciting events that immerse them in the beauty and diversity of Vietnam.
+        </p>
+    </div>
+    {% endif %}
+
+    <!-- Event List Section -->
+<!-- Event Listings Section | Carousel Style -->
+<div class="container mt-5">
+   <h2 id="h2_HomePage">Upcoming Event List</h2>
+   <p class="text-center lead" style="color: #666;">Use the slider to see more events, or searching for easy browsing</p>
+   <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+       <div class="carousel-inner">
+           {% for event in events %}
+               {% if loop.index0 % 3 == 0 %}
+               <!-- Start a new carousel item every 3 events -->
+               <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}">
+                   <div class="row justify-content-center">
+               {% endif %}
+
+               <div class="col-md-4">
+                   <div class="card">
+                       <img src="{{ event.image }}" class="card-img-top" alt="Event Image">
+                       <div class="card-body">
+                           <h5 class="card-title">{{ event.name }}</h5>
+                           <p class="card-text"><strong>Location:</strong> {{event.location}}</p>
+                           <p class="card-text"><strong>Time:</strong> {{ event.time }} - {{ event.etime }}</p>
+                           <p class="card-text">
+                               <strong>Date:</strong> {{ event.date.strftime('%d %b, %Y') }}<br>
+                               <strong>Status:</strong>
+                               <span class="badge rounded-pill 
+                                   {% if event.status == 'Open' %} bg-success
+                                   {% elif event.status == 'Sold Out' %} bg-warning
+                                   {% elif event.status == 'Inactive' %} bg-secondary
+                                   {% elif event.status == 'Cancelled' %} bg-danger
+                                   {% else %} bg-dark
+                                   {% endif %}">{{ event.status }}</span>
+                           </p>
+                           <a href="{{ url_for('event.show', id=event.id) }}" class="btn btn-outline-primary"">View Details</a>
+                       </div>
+                   </div>
+               </div>
+
+               {% if (loop.index0 + 1) % 3 == 0 or loop.last %}
+                   <!-- Close the row and carousel item every 3 events or at the end -->
+                   </div>
+               </div>
+               {% endif %}
+           {% endfor %}
+       </div>
+
+       <!-- Carousel Controls -->
+       <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+           <span class="visually-hidden">Previous</span>
+       </button>
+       <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+           <span class="carousel-control-next-icon" aria-hidden="true"></span>
+           <span class="visually-hidden">Next</span>
+       </button>
+   </div>
+</div>
+
+</div>
+{% endblock %}

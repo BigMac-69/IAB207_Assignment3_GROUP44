@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+
+<div class="container mt-5">
+  <div class="row">
+        <div class="col-md-4">
+            <a href="#"><img src="{{ event.image }}" class="card-img-top img-fluid" alt="Event Image"></a>
+        </div>
+        <div class="col-md-8">
+                <h1 class="mt-5" id="eventHeading">{{event.name}}</h1>
+                <p>Created by: <strong>{{ event.creator.name }}</strong></p>
+        </div>
+  </div>
+  <!-- Updated Event Details Section -->
+  <div class="container mt-5">
+     <h2 id="eventHeading">Event Details</h2>
+     <dl class="row event-details">
+        <dt class="col-sm-3" id="dt_eventDetails">Price:</dt>
+        <dd class="col-sm-9">AUD {{event.price}}</dd>
+        <dt class="col-sm-3" id="dt_eventDetails">Quantity:</dt>
+        <dd class="col-sm-9">{{event.quantity}}</dd>
+        <dt class="col-sm-3" id="dt_eventDetails">Category:</dt>
+        <dd class="col-sm-9">{{event.category}}</dd>
+        <dt class="col-sm-3" id="dt_eventDetails">Date:</dt>
+        <dd class="col-sm-9">{{event.date.strftime('%d/%m/%Y')}}</dd>
+        <dt class="col-sm-3" id="dt_eventDetails">Start/End Time:</dt>
+        <dd class="col-sm-9">{{event.time}} - {{event.etime}}</dd>
+        <dt class="col-sm-3" id="dt_eventDetails">Location:</dt>
+        <dd class="col-sm-9">{{event.location}}</dd>
+        <dt class="col-sm-3" id="dt_eventDetails">Status:</dt>
+        <dd class="col-sm-9">
+          <span class="badge rounded-pill 
+              {% if event.status == 'Open' %} bg-success
+              {% elif event.status == 'Sold Out' %} bg-warning
+              {% elif event.status == 'Inactive' %} bg-secondary
+              {% elif event.status == 'Cancelled' %} bg-danger
+              {% else %} bg-dark
+              {% endif %}"
+              id="eStatus_eventPage">{{ event.status }}
+          </span>
+      </dd>      
+        <dt class="col-sm-3" id="dt_eventDetails">Event Description:</dt>
+        <dd class="col-sm-9">{{event.description}}</dd>
+     </dl>
+     <!-- Conditionally render the "Book This Event" button -->
+     {% if event.status == 'Open' %}
+     <a href="{{ url_for('event.book', event_id=event.id) }}">
+         <button type="submit" class="btn btn-primary my-1">Book This Event</button>
+     </a>
+     {% endif %}
+  </div>
+  {% if current_user == event.creator %}
+  <div class="d-flex mt-3">
+    <!-- Button for updating the event (added functionality) -->
+    <a href="{{ url_for('event.update_event', id=event.id) }}" class="btn btn-warning mx-2" style="min-width: 150px; height: 40px;">Update Event</a>
+
+    <!-- Form for canceling the event (added functionality) -->
+    {% if event.status != 'canceled' %}
+      <form method="POST" action="{{ url_for('event.cancel_event', id=event.id) }}">
+          {{ form.hidden_tag() }}  <!-- Ensure CSRF protection for the form -->
+          <button type="submit" class="btn btn-danger mx-2" style="min-width: 150px; height: 40px;">Cancel Event</button>
+      </form>
+    {% endif %}
+  </div>
+{% endif %}
+  
+  <div class="row border-bottom">  
+    {{render_form(form,"/events/{0}/comment".format(event.id))}}
+    {% for comment in event.comments %}
+    <div class="col-md-12">  
+      <b>{{comment.user.name}} <span class="ml-2 text-muted">{{comment.created_at.strftime('%d-%m-%Y %H:%M')}}</span></b>
+      <p>{{comment.text}}</p>  
+    </div> 
+    {% endfor %} 
+  </div>  
+</div>
+
+{% endblock %}
