@@ -8,6 +8,7 @@
     <form method="POST" enctype="multipart/form-data">
       {{ form.hidden_tag() }}
       {{ render_form(form) }}
+      <a href="{{ url_for('event.show', id=event.id) }}" class="btn btn-secondary mt-3 ml-2">Cancel</a>
     </form>
   </div>
 {% endblock %}
